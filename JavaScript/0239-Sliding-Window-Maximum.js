@@ -31,27 +31,34 @@
 // -10^4 <= nums[i] <= 10^4
 // 1 <= k <= nums.length
 
-var maxSlidingWindow = function(nums, k)
+var maxSlidingWindow = function (nums, k)
 {
-    let left = 0;
-    let result = [];
     let subarr = [];
-    let max;
+    let result = [];
 
-    while(left < nums.length - k + 1)
+    for(let i = 0; i < nums.length; i++)
     {
-        if(left == 0)
+        // remove elements from the front of subarr while subarr contains indices before our window
+        while(subarr[0] < i - k + 1)
         {
-            subarr = nums.slice(left, left + k);
+            subarr.shift();
         }
-        else
+        
+        // pop last elements from subarr if they are less than the next incoming element
+        while(nums[subarr[subarr.length - 1]] < nums[i])
         {
-            subarr = nums.slice(left, left + k).filter((a) => a >= nums.slice(left, left + k)[nums.slice(left, left + k).length - 1]);
+            subarr.pop();
         }
-        max = Math.max(...subarr);
-        result.push(max);
-        left++;
-    }
 
+        // push the next index to subarr
+        subarr.push(i);
+
+        // if the current index is greater than the index of the last element in the window
+        // then push the first nums value using the first index in subarr
+        if (i >= k - 1)
+        {
+            result.push(nums[subarr[0]]);
+        }
+    }
     return result;
 }
