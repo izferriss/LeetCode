@@ -44,7 +44,6 @@
 
 var evalRPN = function(tokens)
 {
-    let result = 0;
     while(tokens.length > 1)
     {
         let opi = operatorIndex(tokens);
