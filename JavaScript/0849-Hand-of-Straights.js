@@ -30,12 +30,9 @@ let isNStraightHand = function(hand, groupSize)
     if(hand.length % groupSize){return false;}
     let map = {};
     let set = new Set(hand);
-    hand.forEach(element =>
-    {
-        map[element] ? map[element]++ : map[element] = 1;    
-    });
+    hand.forEach(x => map[x] ? map[x]++ : map[x] = 1);
 
-    let count = 0;
+    let count = hand.length / groupSize;
     while(count--)
     {
         let min = Math.min(...set);
