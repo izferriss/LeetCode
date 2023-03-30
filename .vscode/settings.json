@@ -49,6 +49,7 @@
         "xutility": "cpp",
         "map": "cpp",
         "stack": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "algorithm": "cpp"
     }
 }

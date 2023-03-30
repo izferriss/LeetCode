@@ -25,29 +25,37 @@
 // All the integers in nums are unique.
 // nums is sorted in ascending order.
 
-var search = function(nums, target)
-{
-    let sorted = Array.from(nums);
-    sorted.sort((a, b) => a - b);
-    let len = nums.length;
-    let l = 0;
-    let r = len - 1;
-    while(l <= r)
-    {
-        let mid = Math.floor((l + r) / 2);
-        if(sorted[mid] < target)
-        {
-            l = mid + 1;
-        }
-        else if(sorted[mid] > target)
-        {
-            r = mid - 1;
-        }
-        else
-        {
-            return nums.indexOf(sorted[mid]);
-        }
-    }
+#include <vector>
 
-    return -1;
-}
+using namespace std;
+
+class Solution
+{
+    public:
+        int binarySearch(vector<int>& nums, int target, int start, int end)
+        {
+            if(end < start)
+            {
+                return -1;
+            }
+
+            int mid = (start + end) / 2;
+            if(nums[mid] == target)
+            {
+                return mid;
+            }
+            else if(target < nums[mid])
+            {
+                return binarySearch(nums, target, start, mid - 1);
+            }
+            else
+            {
+                return binarySearch(nums, target, mid + 1, end);
+            }
+        }
+
+        int search(vector<int>& nums, int target)
+        {
+            return binarySearch(nums, target, 0, nums.size() - 1);
+        }
+};
