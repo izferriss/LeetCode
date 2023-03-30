@@ -30,27 +30,37 @@
 // piles.length <= h <= 10^9
 // 1 <= piles[i] <= 10^9
 
-var minEatingSpeed = function(piles, h)
-{
-    let l = 1;
-    let r = Math.max(...piles);
-    while(l < r)
-    {
-        let mid = Math.floor((l + r) / 2);
-        let sum = 0;
-        for(let bananas of piles)
-        {
-            sum += Math.ceil(bananas / mid);
-        }
-        if(sum <= h)
-        {
-            r = mid;
-        }
-        else
-        {
-            l = mid + 1;
-        }
-    }
+#include <vector>
+#include <algorithm> // max_element(), floor()
 
-    return l;
-}
+using namespace std;
+
+class Solution
+{
+    public:
+        int minEatingSpeed(vector<int>& piles, int h)
+        {
+            int l = 1;
+            int r = *max_element(piles.begin(), piles.end());
+
+            while(l < r)
+            {
+                int mid = floor((l + r) / 2);
+                int sum = 0;
+                for(auto bananas : piles)
+                {
+                    sum += (bananas + mid - 1) / mid;
+                }
+                if(sum <= h)
+                {
+                    r = mid;
+                }
+                else
+                {
+                    l = mid + 1;
+                }
+            }
+
+            return l;
+        }
+};
