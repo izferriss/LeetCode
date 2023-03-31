@@ -29,21 +29,31 @@
 // 0 <= s.length <= 5 * 10^4
 // s consists of English letters, digits, symbols and spaces.
 
+#include <string>
+#include <map>
+#include <algorithm> // max()
 
-var lengthOfLongestSubstring = function(s)
+using namespace std;
+
+class Solution
 {
-    let map = {};
-    let start = 0;
-    let result = 0;
-    let arr = s.split("");
-    for(let i = 0; i < s.length; i++)
-    {
-        let curr = map[arr[i]];
-        if(curr != null && start <= curr){start = curr + 1;}
-        else{result = Math.max(result, i - start + 1);}
+    public:
+        int lengthOfLongestSubstring(string s)
+        {
+            int n = s.size();
+            map<char, int> mp;
+            int result = 0;
 
-        map[arr[i]] = i;
-    }
+            for(int i = 0, j = 0; j < n; j++)
+            {
+                if(mp.find(s[j]) != mp.end())
+                {
+                    i = max(i, mp[s[j]] + 1);
+                }
+                result = max(result, j - i + 1);
+                mp[s[j]] = j;
+            }
 
-    return result;
-}
+            return result;
+        }
+};

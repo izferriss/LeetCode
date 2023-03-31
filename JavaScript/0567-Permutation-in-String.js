@@ -19,7 +19,7 @@
 
 // Constraints:
 
-// 1 <= s1.length, s2.length <= 104
+// 1 <= s1.length, s2.length <= 10^4
 // s1 and s2 consist of lowercase English letters.
 
 var checkInclusion = function(s1, s2)

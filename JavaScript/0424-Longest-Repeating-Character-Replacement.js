@@ -21,7 +21,7 @@
 
 // Constraints:
 
-// 1 <= s.length <= 10&5
+// 1 <= s.length <= 10^5
 // s consists of only uppercase English letters.
 // 0 <= k <= s.length
 
