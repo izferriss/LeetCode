@@ -25,24 +25,33 @@
 // 1 <= nums[i] <= n
 // All the integers in nums appear only once except for precisely one integer which appears two or more times.
 
-var findDuplicate = function(nums)
-{
-    let fast = 0;
-    let slow = 0;
-    while(true)
-    {
-        fast = nums[nums[fast]];
-        slow = nums[slow];
-        if(fast === slow)
-        {
-            let ptr = 0;
-            while(ptr != slow)
-            {
-                ptr = nums[ptr];
-                slow = nums[slow];
-            }
+#include <vector>
 
-            return ptr;
+using namespace std;
+
+class Solution
+{
+    public:
+        int findDuplicate(vector<int>& nums)
+        {
+            int fast = 0;
+            int slow = 0;
+
+            while(true)
+            {
+                fast = nums[nums[fast]];
+                slow = nums[slow];
+                if(fast == slow)
+                {
+                    int ptr = 0;
+                    while(ptr != slow)
+                    {
+                        ptr = nums[ptr];
+                        slow = nums[slow];
+                    }
+
+                    return ptr;
+                }
+            }
         }
-    }
-}
+};

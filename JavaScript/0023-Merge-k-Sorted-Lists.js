@@ -35,12 +35,12 @@
 // 0 <= lists[i].length <= 500
 // -10^4 <= lists[i][j] <= 10^4
 // lists[i] is sorted in ascending order.
-// The sum of lists[i].length will not exceed 104.
+// The sum of lists[i].length will not exceed 10^4.
 
 var mergeKLists = function(lists)
 {
     let merged;
-    console.log(lists);
+    
     if(lists.length != 0)
     {
         merged = lists[0];
