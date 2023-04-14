@@ -50,6 +50,7 @@
         "map": "cpp",
         "stack": "cpp",
         "deque": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "queue": "cpp"
     }
 }
